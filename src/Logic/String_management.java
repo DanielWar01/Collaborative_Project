@@ -1,5 +1,5 @@
 package Logic;
 
-public class Stringer_management {
+public class String_management {
     private String text;
 }
