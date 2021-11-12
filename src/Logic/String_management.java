@@ -58,5 +58,26 @@ public class String_management {
         this.stringAmount = stringAmount;
     }
 
+    /**
+     * Este método realiza la conversión del primer caracter de cada palabra en mayúscula, solo si la palabra
+     * tiene más de un caracter
+     * @param inputString Cadena de texto a ala cual se le pasara el primer caracter de cada palabra en mayúscula
+     * @return Devuelve un arreglo de caracteres con los cambios hechos a la cadena
+     */
+    public static char[] convertToOwnName(String inputString){
+        char[] characters = inputString.toCharArray();
+        characters[0] = Character.toUpperCase(characters[0]);
+        for (int i = 0; i < inputString.length() - 2; i++) {
+            if (characters[i] == ' ' || characters[i] == '.' || characters[i] == ',' ) {
+                characters[i + 1] = Character.toUpperCase(characters[i + 1]);
+            }
+            if(Character.isLetter(inputString.charAt(i)) && inputString.charAt(i+1) == ' ' && inputString.charAt(i-1) == ' ' ||
+                    Character.isLetter(inputString.charAt(i)) && inputString.charAt(i+1) == ',' && inputString.charAt(i-1) == ' '){
+                characters[i] = Character.toLowerCase(characters[i]);
+            }
+        }
+        return characters;
+    }
 
 }
+
