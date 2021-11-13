@@ -27,7 +27,7 @@ public class String_management {
      * @param strToSearch Cadena a buscar en el texto de la variable searchString
      * @param stringVowels Cadena en la que se contaran las vocales que contenga
      * @param hour Cadena en formato hora minuto 00:00
-     * @param stringFill
+     * @param stringFill Cad
      * @param charFill
      * @param amount
      * @param rightLeft
@@ -62,9 +62,9 @@ public class String_management {
      * Este método realiza la conversión del primer caracter de cada palabra en mayúscula, solo si la palabra
      * tiene más de un caracter
      * @param inputString Cadena de texto a ala cual se le pasara el primer caracter de cada palabra en mayúscula
-     * @return Devuelve un arreglo de caracteres con los cambios hechos a la cadena
+     * @return Devuelve una cadena de caracteres con los cambios hechos a la cadena
      */
-    public static char[] convertToOwnName(String inputString){
+    public static String convertToOwnName(String inputString){
         char[] characters = inputString.toCharArray();
         characters[0] = Character.toUpperCase(characters[0]);
         for (int i = 0; i < inputString.length() - 2; i++) {
@@ -76,7 +76,24 @@ public class String_management {
                 characters[i] = Character.toLowerCase(characters[i]);
             }
         }
-        return characters;
+        String outputString = String.valueOf(characters);
+        return outputString;
+    }
+
+    /**
+     * Método cuyo procedimiento es el conteo de vocales de una cadena ignorando si son minúsculas o mayúsculas
+     * @param stringVowels Cadena a la cual se le contaran las vocales que contiene
+     * @return Devuelve un entero con la cantidad de vocales que tiene la cadena de caracteres
+     */
+    public static int countVowels(String stringVowels){
+        int count = 0;
+        for (int i = 0; i < stringVowels.length(); i++){
+            if (stringVowels.charAt(i) == 'a' || stringVowels.charAt(i) == 'e' || stringVowels.charAt(i) == 'i' || stringVowels.charAt(i) == 'o' || stringVowels.charAt(i) == 'u'
+                    || stringVowels.charAt(i) == 'A' || stringVowels.charAt(i) == 'E' || stringVowels.charAt(i) == 'I' || stringVowels.charAt(i) == 'O' || stringVowels.charAt(i) == 'U'){
+                count ++;
+            }
+        }
+        return count;
     }
 
 }
