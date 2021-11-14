@@ -18,6 +18,7 @@ public class String_management {
     private String interString2;
     private String stringRepeat;
     private String stringAmount;
+    private String email;
 
     /**
      * Creación del objeto para llevar a cabo la realización de la clase manejo de cadenas a partir de la entrada de cadenas
@@ -27,19 +28,20 @@ public class String_management {
      * @param strToSearch Cadena a buscar en el texto de la variable searchString
      * @param stringVowels Cadena en la que se contaran las vocales que contenga
      * @param hour Cadena en formato hora minuto 00:00
-     * @param stringFill Cad
-     * @param charFill
-     * @param amount
-     * @param rightLeft
-     * @param stringDelete
-     * @param charDelete
-     * @param charRepeat
-     * @param interString1
-     * @param interString2
-     * @param stringRepeat
-     * @param stringAmount
+     * @param stringFill Cadena de texto a la cual se concatenara un carecter por izquierda o por derecha
+     * @param charFill Caracter a concatenar en la cadena stringFill
+     * @param amount Cantidad de veces a concatenar en stringFill
+     * @param rightLeft Lugar a concatenar izquieda o derecha (byte)
+     * @param stringDelete Cadena a la cual se le eliminaran los caracteres repetidos
+     * @param charDelete Caracter a eliminar en stringDelete
+     * @param charRepeat Cadena a la cual se le eliminaran los caracteres repetidos
+     * @param interString1 Cadena de caracteres que se intercalarán con los caracteres de interString2
+     * @param interString2 Cadena de caracteres que se intercalarán con los caracteres de interString1
+     * @param stringRepeat Texto al cual se le quitaran los caracteres repetidos
+     * @param stringAmount Cadena que se le contarán la cantidad de palabras que contiene
+     * @param email Cadena a la cual se le valida si lo que ingresa el usuario es un correo electronico o no
      */
-    public String_management(String inputString, String searchString, String strToSearch, String stringVowels, String hour, String stringFill, char charFill, int amount, byte rightLeft, String stringDelete, char charDelete, String charRepeat, String interString1, String interString2, String stringRepeat, String stringAmount) {
+    public String_management(String inputString, String searchString, String strToSearch, String stringVowels, String hour, String stringFill, char charFill, int amount, byte rightLeft, String stringDelete, char charDelete, String charRepeat, String interString1, String interString2, String stringRepeat, String stringAmount, String email) {
         this.inputString = inputString;
         this.searchString = searchString;
         this.strToSearch = strToSearch;
@@ -56,6 +58,7 @@ public class String_management {
         this.interString2 = interString2;
         this.stringRepeat = stringRepeat;
         this.stringAmount = stringAmount;
+        this.email = email;
     }
 
     /**
@@ -117,6 +120,46 @@ public class String_management {
         }else{
             return "La opción no está disponible";
         }
+    }
+
+    /**
+     * Este método realiza el proceso de recibir dos cadenas de texto e intercalar sus calacteres pero sin dejar caracteres repetidos
+     * @param interString1  Primera cadena a intercalar sus caracteres
+     * @param interString2  Segunda cadena a intercalar sus caracteres
+     * @return Retorna una sola cadena pero con los caracteres intercalados de las dos cadenas de entrada y sin repetir
+     */
+    public static String intersectionStrings(String interString1, String interString2){
+        String strConcat = interString1+","+interString2;
+        StringBuilder noDupes = new StringBuilder();
+        for (int i = 0; i < strConcat.length(); i++) {
+            String si = strConcat.substring(i, (i+1));
+            if (noDupes.indexOf(si) == -1) {
+                noDupes.append(si);
+            }
+        }
+        String g = noDupes.toString();
+        String parts[] = g.split(",");
+        String interString_1 = parts[0];
+        String interString_2 = parts[1];
+        char[] chars1 = interString_1.toCharArray();
+        char[] chars2 = interString_2.toCharArray();
+        char[] completeString = new char[chars1.length+chars2.length];
+        int j = 0;
+        int i = 0;
+
+        while (j < chars1.length+chars2.length) {
+            if (i < chars1.length) {
+                completeString[j] = chars1[i];
+                j++;
+            }
+            if (i < chars2.length) {
+                completeString[j] = chars2[i];
+                j++;
+            }
+            i++;
+        }
+        String interleavedString = completeString.toString();
+        return interleavedString;
     }
 
 }
