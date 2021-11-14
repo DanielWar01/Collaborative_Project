@@ -10,7 +10,7 @@ public class String_management {
     private String stringFill;
     private char charFill;
     private int amount;
-    private boolean rightLeft;
+    private byte rightLeft;
     private String stringDelete;
     private char charDelete;
     private String charRepeat;
@@ -39,7 +39,7 @@ public class String_management {
      * @param stringRepeat
      * @param stringAmount
      */
-    public String_management(String inputString, String searchString, String strToSearch, String stringVowels, String hour, String stringFill, char charFill, int amount, boolean rightLeft, String stringDelete, char charDelete, String charRepeat, String interString1, String interString2, String stringRepeat, String stringAmount) {
+    public String_management(String inputString, String searchString, String strToSearch, String stringVowels, String hour, String stringFill, char charFill, int amount, byte rightLeft, String stringDelete, char charDelete, String charRepeat, String interString1, String interString2, String stringRepeat, String stringAmount) {
         this.inputString = inputString;
         this.searchString = searchString;
         this.strToSearch = strToSearch;
@@ -94,6 +94,29 @@ public class String_management {
             }
         }
         return count;
+    }
+
+    /**
+     * Método el cual su acción es recibir una cadena de caracteres y un caracter ademas de un entero que diga cuantas veces se repetirá ese caracter además de un byte que especifique
+     * donde se pondrán esos caracteres en la cadena, si por izquierda o por derecha
+     * @param stringFill Cadena inicial
+     * @param charFill Caracter a unir a la cadena
+     * @param rightLeft Byte para saber si se concatena a derecha o izquierda
+     * @param amount Cnatidad de veces que se reperita el caracter introducido
+     * @return Devuelve una cadena concatenada con la catidad de veces el caracter introducido por el usuario
+     */
+    public static String fillCharString(String stringFill, char charFill, byte rightLeft, int amount){
+        char[] characters = new char[amount];
+        for (int i = 0; i < amount; i++){
+            characters[i] = charFill;
+        }
+        if(rightLeft == 1){
+            return stringFill = stringFill+String.valueOf(characters);
+        }else if(rightLeft ==2){
+            return stringFill = String.valueOf(characters)+stringFill;
+        }else{
+            return "La opción no está disponible";
+        }
     }
 
 }
