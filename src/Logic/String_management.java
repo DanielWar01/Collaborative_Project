@@ -1,5 +1,7 @@
 package Logic;
 
+import java.util.StringTokenizer;
+
 public class String_management {
 
     private String inputString;
@@ -41,6 +43,7 @@ public class String_management {
      * @param stringAmount Cadena que se le contarán la cantidad de palabras que contiene
      * @param email Cadena a la cual se le valida si lo que ingresa el usuario es un correo electronico o no
      */
+
     public String_management(String inputString, String searchString, String strToSearch, String stringVowels, String hour, String stringFill, char charFill, int amount, byte rightLeft, String stringDelete, char charDelete, String charRepeat, String interString1, String interString2, String stringRepeat, String stringAmount, String email) {
         this.inputString = inputString;
         this.searchString = searchString;
@@ -67,6 +70,7 @@ public class String_management {
      * @param inputString Cadena de texto a ala cual se le pasara el primer caracter de cada palabra en mayúscula
      * @return Devuelve una cadena de caracteres con los cambios hechos a la cadena
      */
+
     public static String convertToOwnName(String inputString){
         char[] characters = inputString.toCharArray();
         characters[0] = Character.toUpperCase(characters[0]);
@@ -88,6 +92,7 @@ public class String_management {
      * @param stringVowels Cadena a la cual se le contaran las vocales que contiene
      * @return Devuelve un entero con la cantidad de vocales que tiene la cadena de caracteres
      */
+
     public static int countVowels(String stringVowels){
         int count = 0;
         for (int i = 0; i < stringVowels.length(); i++){
@@ -108,6 +113,7 @@ public class String_management {
      * @param amount Cnatidad de veces que se reperita el caracter introducido
      * @return Devuelve una cadena concatenada con la catidad de veces el caracter introducido por el usuario
      */
+
     public static String fillCharString(String stringFill, char charFill, byte rightLeft, int amount){
         char[] characters = new char[amount];
         for (int i = 0; i < amount; i++){
@@ -128,6 +134,7 @@ public class String_management {
      * @param interString2  Segunda cadena a intercalar sus caracteres
      * @return Retorna una sola cadena pero con los caracteres intercalados de las dos cadenas de entrada y sin repetir
      */
+
     public static String intersectionStrings(String interString1, String interString2){
         String strConcat = interString1+","+interString2;
         StringBuilder noDupes = new StringBuilder();
@@ -160,6 +167,17 @@ public class String_management {
         }
         String interleavedString = completeString.toString();
         return interleavedString;
+    }
+
+    /**
+     * En este método lo que se realiza es el conteo de palabras que tiene una cadena de entrada
+     * @param stringAmount Cadena a la que se contaran su cantidad de palabras
+     * @return Entero que indica la cantidad de palabras de la cadena
+     */
+
+    public static int countWords(String stringAmount){
+        StringTokenizer strToken = new StringTokenizer(stringAmount);
+        return strToken.countTokens();
     }
 
 }
