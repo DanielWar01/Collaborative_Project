@@ -3,8 +3,10 @@
 
 ### Integrantes
 -Yulieth Paola Chaparro
-
+     
 -Daniel Alejandro Guerra Muñoz
+
+-Juan Carlos Rojas Pestana
 
 ### IDE utilizado para la realización del proyecto
 Los entornos de desarrollo integrado que fueron utilizados para el desarrollo del presente proyecto fueron:
