@@ -86,6 +86,27 @@ public class String_management {
         String outputString = String.valueOf(characters);
         return outputString;
     }
+    
+    /**Metodo cuyo procedimiento es buscar cuantas veces esta una cadena de caracteres en otra 
+     * @param searchString Cadena que contiene varias palabras para buscar
+     * @param strToSearch Cadena a buscar en el texto de la variable searchString
+     * @return devuelve Entero que indica el n�mero de veces que existe la cadena
+     */
+    
+    public static int searchWords(String searchString, String strToSearch) {
+    	int counter = 0;
+    	String array[] = searchString.split(" "); 
+    	for (int i = 0; i < array.length; i++) {
+    		if(array[i].equalsIgnoreCase(strToSearch)) {
+    			
+    			counter++;
+    		}
+			
+		}
+    	
+    	
+    	return counter;
+    }
 
     /**
      * Método cuyo procedimiento es el conteo de vocales de una cadena ignorando si son minúsculas o mayúsculas
@@ -179,6 +200,6 @@ public class String_management {
         StringTokenizer strToken = new StringTokenizer(stringAmount);
         return strToken.countTokens();
     }
-//hola
+
 }
 
