@@ -1,6 +1,7 @@
 package Logic;
 
 import java.util.StringTokenizer;
+import java.util.regex.Pattern;
 
 public class String_management {
 
@@ -72,17 +73,33 @@ public class String_management {
      */
 
     public static String convertToOwnName(String inputString){
+        /*
+         *Para cambiar la primera letra de cada palabra se necesita evaluar cada caracter para ello se convierte el string en un arreglo de caracteres
+         */
         char[] characters = inputString.toCharArray();
         characters[0] = Character.toUpperCase(characters[0]);
+        /*
+         * El siguiente paso seria mediante un for y dos condicionales evaluar cada uno de los caracteres contenidos demtro del arreglo de caracteres
+         */
         for (int i = 0; i < inputString.length() - 2; i++) {
+            /*
+             * Si el caracter del arreglo en la posicion "i" es un espacion, coma o punto en esa posición más uno se debe pasar a mayúscula
+             */
             if (characters[i] == ' ' || characters[i] == '.' || characters[i] == ',' ) {
                 characters[i + 1] = Character.toUpperCase(characters[i + 1]);
             }
+            /*
+             * En el caso de que hayan un espacio seguido de una letra seguido de un espacio, o un espacio seguido de una letra seguido de una coma; significa que la letra
+             * esta sola por lo tanto se pasa a minuscula con toLowerCase
+             */
             if(Character.isLetter(inputString.charAt(i)) && inputString.charAt(i+1) == ' ' && inputString.charAt(i-1) == ' ' ||
                     Character.isLetter(inputString.charAt(i)) && inputString.charAt(i+1) == ',' && inputString.charAt(i-1) == ' '){
                 characters[i] = Character.toLowerCase(characters[i]);
             }
         }
+        /*
+         * Finalmente se pasa el arreglo de caracteres a un string mediante String.valueOf
+         */
         String outputString = String.valueOf(characters);
         return outputString;
     }
@@ -94,13 +111,20 @@ public class String_management {
      */
 
     public static int countVowels(String stringVowels){
+        /*
+         * Se crea una variable contador que va a contar la veces en las que aparece una vocal controlada por un ciclo for y un condicional que hará aumentar
+         * contador a medida que detecte una vocal en la cadena mediante una expresion regular tanto de vocales con acento como sin acento
+         */
         int count = 0;
         for (int i = 0; i < stringVowels.length(); i++){
-            if (stringVowels.charAt(i) == 'a' || stringVowels.charAt(i) == 'e' || stringVowels.charAt(i) == 'i' || stringVowels.charAt(i) == 'o' || stringVowels.charAt(i) == 'u'
-                    || stringVowels.charAt(i) == 'A' || stringVowels.charAt(i) == 'E' || stringVowels.charAt(i) == 'I' || stringVowels.charAt(i) == 'O' || stringVowels.charAt(i) == 'U'){
+            String letter = String.valueOf(stringVowels.charAt(i));
+            if (Pattern.matches("[aeiouAEIOU]", letter) || Pattern.matches("[áéíóúÁÉÍÓÚ]", letter)){
                 count ++;
             }
         }
+        /*
+         * Finalmente se retorna el contador
+         */
         return count;
     }
 
@@ -115,10 +139,17 @@ public class String_management {
      */
 
     public static String fillCharString(String stringFill, char charFill, byte rightLeft, int amount){
+        /*
+         * Para poder concatenar cierta cantidad de caracteres lo que se haría sería dentro de un arreglo de tipo char con la cantidad de caracteres que quiera el usuario
+         * y mediante un for lenar con el caracter n veces
+         */
         char[] characters = new char[amount];
         for (int i = 0; i < amount; i++){
             characters[i] = charFill;
         }
+        /*
+         * Después a partir de unos condicionales que evaluan si los caracteres se deben poner por izquierda o por derecha y se concatena en el string original
+         */
         if(rightLeft == 1){
             return stringFill = stringFill+String.valueOf(characters);
         }else if(rightLeft ==2){
@@ -136,6 +167,13 @@ public class String_management {
      */
 
     public static String intersectionStrings(String interString1, String interString2){
+        /*
+         * Bueno, como se necesita quitar los caracteres repetidos de las dos cadenas entonces para ello lo que se haría sería sería concatenar las dos cadenas
+         * unidas por una coma (¿Para que la coma?, la coma sería para despues realizar arreglo String por medio del método split lo cual va a separar las dos cadenas)
+         * Después lo que se haria es crear un StringBuilder para utilizar la función .append para construir el String letra por letra; entonces dentro de un for se crea
+         * un String que tomara caracter por caracter y lo mediante un if se buscara en la cadena si el caracter ya se encuentra si es así con el método append lo añadimos
+         * al StringBuilder en caso contrario se queda por fuera
+         */
         String strConcat = interString1+","+interString2;
         StringBuilder noDupes = new StringBuilder();
         for (int i = 0; i < strConcat.length(); i++) {
@@ -144,6 +182,10 @@ public class String_management {
                 noDupes.append(si);
             }
         }
+        /*
+         * Ahora el StringBuilder se pasa a String y se genera un split separado por la coma entonces cada cadena la pasamos a un arreglo de caracteres  y se crea un arreglo
+         * adicional que contendrá las cadenas con la intersección con la longitud de ambas
+         */
         String g = noDupes.toString();
         String parts[] = g.split(",");
         String interString_1 = parts[0];
@@ -153,7 +195,9 @@ public class String_management {
         char[] completeString = new char[chars1.length+chars2.length];
         int j = 0;
         int i = 0;
-
+        /*
+         Mediante un ciclo mientras y dos condicionales (uno para chars1 y el otro chars2), si se cumplen se añade al arreglo que contiene la intersección
+         */
         while (j < chars1.length+chars2.length) {
             if (i < chars1.length) {
                 completeString[j] = chars1[i];
@@ -165,6 +209,9 @@ public class String_management {
             }
             i++;
         }
+        /*
+        Finalmente se pasa el arreglo a String y se retorna
+         */
         String interleavedString = completeString.toString();
         return interleavedString;
     }
@@ -176,9 +223,15 @@ public class String_management {
      */
 
     public static int countWords(String stringAmount){
+        /*
+        Este es el más sencillo simplemente al pasar el string a tokens con la clase StringTokenizer, se coje el objeto y se llama al método que va a contar la cantidad
+        de tokens(palabras) devolviendo un entero
+         */
         StringTokenizer strToken = new StringTokenizer(stringAmount);
         return strToken.countTokens();
     }
+
+
 
 }
 

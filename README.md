@@ -6,6 +6,8 @@
 
 -Daniel Alejandro Guerra Muñoz
 
+-Juan Carlos Rojas 
+
 ### IDE utilizado para la realización del proyecto
 Los entornos de desarrollo integrado que fueron utilizados para el desarrollo del presente proyecto fueron:
 - Eclipse
