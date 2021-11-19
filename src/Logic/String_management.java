@@ -124,6 +124,21 @@ public class String_management {
         }
         return count;
     }
+    
+    /**
+     * Este metodo realiza el proceso con una cadena de caracteres que dice una hora y calcula cuantos minutos faltan para a�o nuevo a partir de esta
+     * @param hour String que da la hora base 
+     * @return Int timeLeft que devuelve cuantos minutos faltan para a�o nuevo 
+     */
+    public static int newYear (String hour) {
+    int hours, minutes, timeLeft = 0;
+
+    hours = Integer.parseInt(hour.substring(0,2));
+    minutes = Integer.parseInt(hour.substring(3,5));
+    timeLeft = ((23-hours)*60)+(60-minutes);
+
+     return timeLeft;
+    }
 
     /**
      * Método el cual su acción es recibir una cadena de caracteres y un caracter ademas de un entero que diga cuantas veces se repetirá ese caracter además de un byte que especifique
@@ -201,6 +216,24 @@ public class String_management {
         String interleavedString = completeString.toString();
         return interleavedString;
     }
+    
+    /**
+     * este metodo realiza la eliminacion de caracteres repetidos en una cadena de caracteres
+     * @param stringRepeat cadena a la que se borrara los caracteres repetidos
+     * @return cadena sin caracteres repetidos
+     */
+    public static String deleterepeat( String stringRepeat ) {
+    	
+    	StringBuilder noDupes = new StringBuilder();
+        for (int i = 0; i < stringRepeat.length(); i++) {
+            String si = stringRepeat.substring(i, (i+1));
+            if (noDupes.indexOf(si) == -1) {
+                noDupes.append(si);
+            }
+        }
+
+		return ""+noDupes;
+    	}
 
     /**
      * En este método lo que se realiza es el conteo de palabras que tiene una cadena de entrada
