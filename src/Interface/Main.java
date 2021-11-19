@@ -3,31 +3,33 @@ package Interface;
 import Logic.String_management;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.regex.Pattern;
 
 
 public class Main {
     public static void main(String[] args) {
         int option = 0;
+        boolean exit = true;
         boolean confirmar = true;
         String str;
-        while (option < 11 || option > 11){
+        while (exit){
             confirmar = true;
             do {
                 try {
 
-                    option = Integer.parseInt(JOptionPane.showInputDialog("Menú \nIngresa la opcion de manejo de cadenas que quieras" +
-                            "\n1)Convertir cadena en nombre propio" +
-                            "\n2)Buscar una palabra en un texto" +
-                            "\n3)Contar las vocales de una cadena" +
-                            "\n4)Saber los minutos que faltan para año nuevo" +
-                            "\n5)Concatenar n caracteres en una cadena por izquierda o derecha" +
-                            "\n6)Borrar caracter de una cadena" +
-                            "\n7)Realizar intersección entre dos cadenas" +
-                            "\n8)Borrar caracter repetido" +
-                            "\n9)Cantidad de palabras en una cadena" +
-                            "\n10)Validar correo electronico" +
-                            "\n11)Salir del programa"));
+                    option = Integer.parseInt(JOptionPane.showInputDialog("MENU\nIngresa la opción de manejo de cadenas que quieras" +
+                            "\n1) Convertir cadena en nombre propio" +
+                            "\n2) Buscar una palabra en un texto" +
+                            "\n3) Contar las vocales de una cadena" +
+                            "\n4) Saber los minutos que faltan para año nuevo" +
+                            "\n5) Concatenar n caracteres en una cadena por izquierda o derecha" +
+                            "\n6) Borrar caracter de una cadena" +
+                            "\n7) Realizar intersección entre dos cadenas" +
+                            "\n8) Borrar caracter repetido" +
+                            "\n9) Cantidad de palabras en una cadena" +
+                            "\n10) Validar correo electronico" +
+                            "\n11) Salir del programa"));
                     switch (option){
                         case 1 :
                             str = JOptionPane.showInputDialog("Ingresa la cadena a convertir a nombre propio");
@@ -96,9 +98,18 @@ public class Main {
                                     JOptionPane.showMessageDialog(null, "El correo electronico ingresado es inválido");
                                 }
                             break;
+                        case 11 :
+                            int ofCoorse = Integer.parseInt(JOptionPane.showInputDialog("¿Seguro quieres salir?" +
+                                    "\n1) Sí" +
+                                    "\n2) No"));
+                            if(ofCoorse == 1) {
+                                exit = false;
+                                break;
+                            }
+
                     }
                 }catch (NumberFormatException ex){
-                    JOptionPane.showMessageDialog(null, "En la opción debes ingresar solo números enteros");
+                    JOptionPane.showMessageDialog(null, "En la opción debes ingresar solo números enteros o ingresar alguna opción");
                     confirmar = false;
                 }
             }while(!confirmar);
