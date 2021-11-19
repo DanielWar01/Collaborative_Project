@@ -17,4 +17,4 @@ El proyecto se basa en aprender el correcto manejo de las cadenas de texto y sus
 [![Diagrama de Clase](guerra.daniel@uptc.edu.co "Diagrama de Clase")](https://drive.google.com/file/d/18dRElc8V2PxZq7Yr0hot3DHef-CbceLi/view?usp=sharing "Diagrama de Clase")
 
 ### Documentación del proyento en Javadoc
-Enlace: file:///C:/Users/Daniel/IdeaProjects/Collaborative_Project/index.html
+Ubicación del archivo: file:///C:/Users/Daniel/IdeaProjects/Collaborative_Project/index.html
