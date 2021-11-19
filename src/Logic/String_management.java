@@ -1,69 +1,15 @@
 package Logic;
 
 import java.util.StringTokenizer;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class String_management {
 
-    private String inputString;
-    private String searchString;
-    private String strToSearch;
-    private String stringVowels;
-    private String hour;
-    private String stringFill;
-    private char charFill;
-    private int amount;
-    private byte rightLeft;
-    private String stringDelete;
-    private char charDelete;
-    private String charRepeat;
-    private String interString1;
-    private String interString2;
-    private String stringRepeat;
-    private String stringAmount;
-    private String email;
 
-    /**
-     * Creación del objeto para llevar a cabo la realización de la clase manejo de cadenas a partir de la entrada de cadenas
-     * y su manipulación partiendo de la cadena que quiera manipular el usuario con el menú dado en la interfaz de usuario.
-     * @param inputString Cadena dada por el usuario a la cual cada que contenga se la convertirá en nombre propio
-     * @param searchString Cadena que contiene varias palabras para buscar
-     * @param strToSearch Cadena a buscar en el texto de la variable searchString
-     * @param stringVowels Cadena en la que se contaran las vocales que contenga
-     * @param hour Cadena en formato hora minuto 00:00
-     * @param stringFill Cadena de texto a la cual se concatenara un carecter por izquierda o por derecha
-     * @param charFill Caracter a concatenar en la cadena stringFill
-     * @param amount Cantidad de veces a concatenar en stringFill
-     * @param rightLeft Lugar a concatenar izquieda o derecha (byte)
-     * @param stringDelete Cadena a la cual se le eliminaran los caracteres repetidos
-     * @param charDelete Caracter a eliminar en stringDelete
-     * @param charRepeat Cadena a la cual se le eliminaran los caracteres repetidos
-     * @param interString1 Cadena de caracteres que se intercalarán con los caracteres de interString2
-     * @param interString2 Cadena de caracteres que se intercalarán con los caracteres de interString1
-     * @param stringRepeat Texto al cual se le quitaran los caracteres repetidos
-     * @param stringAmount Cadena que se le contarán la cantidad de palabras que contiene
-     * @param email Cadena a la cual se le valida si lo que ingresa el usuario es un correo electronico o no
-     */
 
-    public String_management(String inputString, String searchString, String strToSearch, String stringVowels, String hour, String stringFill, char charFill, int amount, byte rightLeft, String stringDelete, char charDelete, String charRepeat, String interString1, String interString2, String stringRepeat, String stringAmount, String email) {
-        this.inputString = inputString;
-        this.searchString = searchString;
-        this.strToSearch = strToSearch;
-        this.stringVowels = stringVowels;
-        this.hour = hour;
-        this.stringFill = stringFill;
-        this.charFill = charFill;
-        this.amount = amount;
-        this.rightLeft = rightLeft;
-        this.stringDelete = stringDelete;
-        this.charDelete = charDelete;
-        this.charRepeat = charRepeat;
-        this.interString1 = interString1;
-        this.interString2 = interString2;
-        this.stringRepeat = stringRepeat;
-        this.stringAmount = stringAmount;
-        this.email = email;
-    }
+
+
 
     /**
      * Este método realiza la conversión del primer caracter de cada palabra en mayúscula, solo si la palabra
@@ -83,7 +29,7 @@ public class String_management {
          */
         for (int i = 0; i < inputString.length() - 2; i++) {
             /*
-             * Si el caracter del arreglo en la posicion "i" es un espacion, coma o punto en esa posición más uno se debe pasar a mayúscula
+             * Si el caracter del arreglo en la posicion "i" es un espacio, coma o punto en esa posición más uno se debe pasar a mayúscula
              */
             if (characters[i] == ' ' || characters[i] == '.' || characters[i] == ',' ) {
                 characters[i + 1] = Character.toUpperCase(characters[i + 1]);
@@ -100,8 +46,24 @@ public class String_management {
         /*
          * Finalmente se pasa el arreglo de caracteres a un string mediante String.valueOf
          */
-        String outputString = String.valueOf(characters);
-        return outputString;
+        return String.valueOf(characters);
+    }
+
+    /**Metodo cuyo procedimiento es buscar cuantas veces esta una cadena de caracteres en otra
+     * @param searchString Cadena que contiene varias palabras para buscar
+     * @param strToSearch Cadena a buscar en el texto de la variable searchString
+     * @return devuelve Entero que indica el número de veces que existe la cadena
+     */
+
+    public static int searchWords(String searchString, String strToSearch) {
+        int counter = 0;
+        Pattern patron = Pattern.compile(Pattern.quote(strToSearch), Pattern.CASE_INSENSITIVE);
+        Matcher m = patron.matcher(searchString);
+        while (m.find()) {
+            counter++;
+        }
+        return counter;
+
     }
 
     /**
@@ -129,6 +91,22 @@ public class String_management {
     }
 
     /**
+     * Método que a partir de una cadena de la hora del 31 en formato 00:00 calcula la cantidad de minutos que hacen falta para año nuevo
+     * @param hour Cadena en formato 00:00
+     * @return Devuelve un entero con la cantidad de minutos que falta para el nuevo año
+     */
+    public static int minutesNewYear(String hour){
+        int hours, minutes, timeLeft = 0;
+
+            hours = Integer.parseInt(hour.substring(0,2));
+            minutes = Integer.parseInt(hour.substring(3,5));
+            timeLeft = ((23-hours)*60)+(60-minutes);
+
+        return timeLeft;
+
+    }
+
+    /**
      * Método el cual su acción es recibir una cadena de caracteres y un caracter ademas de un entero que diga cuantas veces se repetirá ese caracter además de un byte que especifique
      * donde se pondrán esos caracteres en la cadena, si por izquierda o por derecha
      * @param stringFill Cadena inicial
@@ -138,7 +116,7 @@ public class String_management {
      * @return Devuelve una cadena concatenada con la catidad de veces el caracter introducido por el usuario
      */
 
-    public static String fillCharString(String stringFill, char charFill, byte rightLeft, int amount){
+    public static String fillCharString(String stringFill, char charFill, boolean rightLeft, int amount){
         /*
          * Para poder concatenar cierta cantidad de caracteres lo que se haría sería dentro de un arreglo de tipo char con la cantidad de caracteres que quiera el usuario
          * y mediante un for lenar con el caracter n veces
@@ -150,13 +128,32 @@ public class String_management {
         /*
          * Después a partir de unos condicionales que evaluan si los caracteres se deben poner por izquierda o por derecha y se concatena en el string original
          */
-        if(rightLeft == 1){
+        if(rightLeft){
             return stringFill = stringFill+String.valueOf(characters);
-        }else if(rightLeft ==2){
+        }else if(rightLeft == false){
             return stringFill = String.valueOf(characters)+stringFill;
         }else{
             return "La opción no está disponible";
         }
+    }
+
+    /**
+     * Método cuya acción es borrar el caracter que elija el usuaario en la cadena de entrada
+     * @param stringDelete Cadena a la cual se le eliminaran el caracter que se elija
+     * @param charDelete Caracter a eliminar en la cadena stringDelete
+     * @return Devuelve la cadena sin el caracter que se eligio
+     */
+    public static String characterDelete(String stringDelete, char charDelete){
+        char [] characters = stringDelete.toCharArray();
+        StringBuilder stringComplete = new StringBuilder();
+        int i = 0;
+        while(i < characters.length){
+            if(charDelete != characters[i]){
+                stringComplete.append(characters[i]);
+            }
+            i++;
+        }
+        return stringComplete.toString();
     }
 
     /**
@@ -168,7 +165,7 @@ public class String_management {
 
     public static String intersectionStrings(String interString1, String interString2){
         /*
-         * Bueno, como se necesita quitar los caracteres repetidos de las dos cadenas entonces para ello lo que se haría sería sería concatenar las dos cadenas
+         * Bueno, como se necesita quitar los caracteres repetidos de las dos cadenas entonces para ello lo que se haría sería concatenar las dos cadenas
          * unidas por una coma (¿Para que la coma?, la coma sería para despues realizar arreglo String por medio del método split lo cual va a separar las dos cadenas)
          * Después lo que se haria es crear un StringBuilder para utilizar la función .append para construir el String letra por letra; entonces dentro de un for se crea
          * un String que tomara caracter por caracter y lo mediante un if se buscara en la cadena si el caracter ya se encuentra si es así con el método append lo añadimos
@@ -188,15 +185,15 @@ public class String_management {
          */
         String g = noDupes.toString();
         String parts[] = g.split(",");
-        String interString_1 = parts[0];
-        String interString_2 = parts[1];
-        char[] chars1 = interString_1.toCharArray();
-        char[] chars2 = interString_2.toCharArray();
+        char[] chars1 = parts[0].toCharArray();
+        char[] chars2 = parts[1].toCharArray();
+
         char[] completeString = new char[chars1.length+chars2.length];
         int j = 0;
         int i = 0;
         /*
-         Mediante un ciclo mientras y dos condicionales (uno para chars1 y el otro chars2), si se cumplen se añade al arreglo que contiene la intersección
+         Mediante un ciclo mientras y dos condicionales (uno para chars1 y el otro chars2), si se cumplen se añade al arreglo que contiene la intersección, esto se
+         hace para que no se sobrepase la cantidad de elementos del arreglo que almacena la intersección
          */
         while (j < chars1.length+chars2.length) {
             if (i < chars1.length) {
@@ -212,8 +209,25 @@ public class String_management {
         /*
         Finalmente se pasa el arreglo a String y se retorna
          */
-        String interleavedString = completeString.toString();
-        return interleavedString;
+
+        return completeString.toString();
+    }
+
+    /**
+     * Método que elimina los caracteres repetidos de una cadena y solo deja el primero
+     * @param charRepeat Cadena a la cual se le eliminaran sus caracteres repetidos
+     * @return Devuelve la cadena sin los caracteres repetidos
+     */
+    public static String deleteCharacterRepeat(String charRepeat){
+        StringBuilder noRepeat = new StringBuilder();
+        String str = charRepeat.substring(4,5);
+        for (int i = 0; i < charRepeat.length(); i++) {
+            String si = charRepeat.substring(i, (i+1));
+            if (noRepeat.indexOf(si) == -1 || " ".equals(si)) {
+                noRepeat.append(si);
+            }
+        }
+        return noRepeat.toString();
     }
 
     /**
@@ -231,7 +245,18 @@ public class String_management {
         return strToken.countTokens();
     }
 
-
+    /**
+     *  Metodo que comprueba si un correo electronico es válido
+     * @param email Correo electronico ingresado por el usuario
+     * @return Devuelve un valor lógico (true o false)
+     */
+    public static boolean validateEmail(String email){
+        /*
+        Para poder validar el correo electrónico se utiliza un patrón que mediante un regex o expresion regular comprueba la validez del correo ingresado la parte
+        [\w-]+(\.[\w-]+ los caracteres iniciales a-z, A-Z y 0-9 y el punto los demas signos,
+         */
+        return Pattern.matches("^[\\w-]+(\\.[\\w-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{0,2})$", email);
+    }
 
 }
 
