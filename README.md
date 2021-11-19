@@ -2,7 +2,6 @@
 # Proyecto colaborativo de manejo de Cadenas 👨‍💻
 
 ### Integrantes
--Yulieth Paola Chaparro
      
 -Daniel Alejandro Guerra Muñoz
 
