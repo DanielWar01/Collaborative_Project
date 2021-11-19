@@ -148,6 +148,18 @@ public class String_management {
             return "La opción no está disponible";
         }
     }
+    /**
+     * este metodo realiza el proceso de borrar caracteres de una cadena de caracteres
+     * @param stringDelete cadena de caracteres donde se va a borrar un caracter;
+     * @param charDelete caracter que se va a borrar de la cadena de caracteres;
+     */
+
+    public static String deleteChar( String stringDelete, String charDelete) {
+    	
+    	stringDelete = stringDelete.replace(charDelete, "");
+    	
+    	return stringDelete;
+    }
 
     /**
      * Este método realiza el proceso de recibir dos cadenas de texto e intercalar sus calacteres pero sin dejar caracteres repetidos
