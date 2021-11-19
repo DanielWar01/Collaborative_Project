@@ -222,7 +222,7 @@ public class String_management {
      * @param stringRepeat cadena a la que se borrara los caracteres repetidos
      * @return cadena sin caracteres repetidos
      */
-    public static String deleterepeat( String stringRepeat ) {
+    public static String deleteRepeat( String stringRepeat ) {
     	
     	StringBuilder noDupes = new StringBuilder();
         for (int i = 0; i < stringRepeat.length(); i++) {
