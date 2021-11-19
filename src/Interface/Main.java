@@ -24,7 +24,7 @@ public class Main {
                             "\n6)Borrar caracter de una cadena" +
                             "\n7)Realizar intersección entre dos cadenas" +
                             "\n8)Borrar caracter repetido" +
-                            "\n9)Cantidad de palabra en una cadena" +
+                            "\n9)Cantidad de palabras en una cadena" +
                             "\n10)Validar correo electronico" +
                             "\n11)Salir del programa"));
                     switch (option){
@@ -48,7 +48,7 @@ public class Main {
                         case 4 :
                             str = JOptionPane.showInputDialog("Ingresa la hora en formato 00:00");
                             if(Pattern.matches("^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$", str)){
-                                JOptionPane.showMessageDialog(null, "Para año nuevo faltan "+String_management.minutesNewYear(str)+" minutos");
+                                JOptionPane.showMessageDialog(null, "Para año nuevo faltan "+String_management.newYear(str)+" minutos");
                             }else{
                                 JOptionPane.showMessageDialog(null,"La cadena no está formada en formato 00:00");
                             }
@@ -62,14 +62,16 @@ public class Main {
                                 boolean rigthLeft = Boolean.parseBoolean(JOptionPane.showInputDialog("¿Dónde quieres concatenar?" +
                                         "\nfalse para izquierda" +
                                         "\ntrue para derecha"));
-                                JOptionPane.showMessageDialog(null, "La cadena resultante es: '" + String_management.fillCharString(str, fillChar, rigthLeft, amount));
+                                JOptionPane.showMessageDialog(null, "La cadena resultante es: '" + String_management.fillCharString(str, fillChar, rigthLeft, amount)+"' ");
                             }catch(NumberFormatException exception){
                                 JOptionPane.showMessageDialog(null, "La cantidad debe ser solo un número entero");
                             }
                             break;
                         case 6 :
                             str = JOptionPane.showInputDialog("Ingresa la cadena a la que borraras el caracter");
-                            String charDelete = JOptionPane.showInputDialog("Ingresa el caracter a borrar");
+                            char charDelete = JOptionPane.showInputDialog("Ingresa el caracter a borrar").charAt(0);
+                            String strChar = String.valueOf(charDelete);
+                            JOptionPane.showMessageDialog(null, String_management.deleteChar(str, strChar));
                             break;
                         case 7 :
                             str = JOptionPane.showInputDialog("Ingresa la primer a cadena");
@@ -78,7 +80,7 @@ public class Main {
                             break;
                         case 8 :
                             str = JOptionPane.showInputDialog("Ingresa la cadena a eliminar sus caracteres repetidos");
-                            JOptionPane.showMessageDialog(null, "La cadena resultante es: '");
+                            JOptionPane.showMessageDialog(null, "La cadena resultante es: '"+String_management.deleteRepeat(str)+"' ");
                             break;
                         case 9 :
                             str = JOptionPane.showInputDialog("Ingresa la cadena a la cual quieras contar" +
@@ -92,6 +94,7 @@ public class Main {
                             }else{
                                     JOptionPane.showMessageDialog(null, "El correo electronico ingresado es inválido");
                                 }
+                            break;
                     }
                 }catch (NumberFormatException ex){
                     JOptionPane.showMessageDialog(null, "En la opción debes ingresar solo números enteros");

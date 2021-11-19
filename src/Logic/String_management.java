@@ -91,11 +91,11 @@ public class String_management {
     }
 
     /**
-     * Método que a partir de una cadena de la hora del 31 en formato 00:00 calcula la cantidad de minutos que hacen falta para año nuevo
-     * @param hour Cadena en formato 00:00
-     * @return Devuelve un entero con la cantidad de minutos que falta para el nuevo año
+     * Este metodo realiza el proceso con una cadena de caracteres que dice una hora y calcula cuantos minutos faltan para año nuevo a partir de esta
+     * @param hour String que da la hora base
+     * @return Int timeLeft que devuelve cuantos minutos faltan para año nuevo
      */
-    public static int minutesNewYear(String hour){
+    public static int newYear(String hour){
         int hours, minutes, timeLeft = 0;
 
             hours = Integer.parseInt(hour.substring(0,2));
@@ -138,23 +138,18 @@ public class String_management {
     }
 
     /**
-     * Método cuya acción es borrar el caracter que elija el usuaario en la cadena de entrada
-     * @param stringDelete Cadena a la cual se le eliminaran el caracter que se elija
-     * @param charDelete Caracter a eliminar en la cadena stringDelete
-     * @return Devuelve la cadena sin el caracter que se eligio
+     * este metodo realiza el proceso de borrar caracteres de una cadena de caracteres
+     * @param stringDelete cadena de caracteres donde se va a borrar un caracter;
+     * @param charDelete caracter que se va a borrar de la cadena de caracteres;
      */
-    public static String characterDelete(String stringDelete, char charDelete){
-        char [] characters = stringDelete.toCharArray();
-        StringBuilder stringComplete = new StringBuilder();
-        int i = 0;
-        while(i < characters.length){
-            if(charDelete != characters[i]){
-                stringComplete.append(characters[i]);
-            }
-            i++;
-        }
-        return stringComplete.toString();
+
+    public static String deleteChar( String stringDelete, String charDelete) {
+
+        stringDelete = stringDelete.replace(charDelete, "");
+
+        return stringDelete;
     }
+
 
     /**
      * Este método realiza el proceso de recibir dos cadenas de texto e intercalar sus calacteres pero sin dejar caracteres repetidos
@@ -175,7 +170,7 @@ public class String_management {
         StringBuilder noDupes = new StringBuilder();
         for (int i = 0; i < strConcat.length(); i++) {
             String si = strConcat.substring(i, (i+1));
-            if (noDupes.indexOf(si) == -1) {
+            if (noDupes.indexOf(si) == -1 || " ".equals(si)) {
                 noDupes.append(si);
             }
         }
@@ -210,7 +205,7 @@ public class String_management {
         Finalmente se pasa el arreglo a String y se retorna
          */
 
-        return completeString.toString();
+        return String.valueOf(completeString);
     }
 
     /**
@@ -218,7 +213,7 @@ public class String_management {
      * @param charRepeat Cadena a la cual se le eliminaran sus caracteres repetidos
      * @return Devuelve la cadena sin los caracteres repetidos
      */
-    public static String deleteCharacterRepeat(String charRepeat){
+    public static String deleteRepeat(String charRepeat){
         StringBuilder noRepeat = new StringBuilder();
         String str = charRepeat.substring(4,5);
         for (int i = 0; i < charRepeat.length(); i++) {
