@@ -12,9 +12,9 @@ public class String_management {
 
 
     /**
-     * Este método realiza la conversión del primer caracter de cada palabra en mayúscula, solo si la palabra
-     * tiene más de un caracter
-     * @param inputString Cadena de texto a ala cual se le pasara el primer caracter de cada palabra en mayúscula
+     * Este metodo realiza la conversión del primer caracter de cada palabra en mayuscula, solo si la palabra
+     * tiene mas de un caracter
+     * @param inputString Cadena de texto a ala cual se le pasara el primer caracter de cada palabra en mayuscula
      * @return Devuelve una cadena de caracteres con los cambios hechos a la cadena
      */
 
@@ -52,7 +52,7 @@ public class String_management {
     /**Metodo cuyo procedimiento es buscar cuantas veces esta una cadena de caracteres en otra
      * @param searchString Cadena que contiene varias palabras para buscar
      * @param strToSearch Cadena a buscar en el texto de la variable searchString
-     * @return devuelve Entero que indica el número de veces que existe la cadena
+     * @return Devuelve entero que indica el número de veces que existe la cadena
      */
 
     public static int searchWords(String searchString, String strToSearch) {
@@ -67,7 +67,7 @@ public class String_management {
     }
 
     /**
-     * Método cuyo procedimiento es el conteo de vocales de una cadena ignorando si son minúsculas o mayúsculas
+     * Metodo cuyo procedimiento es el conteo de vocales de una cadena ignorando si son minúsculas o mayúsculas
      * @param stringVowels Cadena a la cual se le contaran las vocales que contiene
      * @return Devuelve un entero con la cantidad de vocales que tiene la cadena de caracteres
      */
@@ -80,7 +80,7 @@ public class String_management {
         int count = 0;
         for (int i = 0; i < stringVowels.length(); i++){
             String letter = String.valueOf(stringVowels.charAt(i));
-            if (Pattern.matches("[aeiouAEIOU]", letter) || Pattern.matches("[áéíóúÁÉÍÓÚ]", letter)){
+            if (Pattern.matches("[aeiouAEIOU]", letter) ){
                 count ++;
             }
         }
@@ -93,7 +93,7 @@ public class String_management {
     /**
      * Este metodo realiza el proceso con una cadena de caracteres que dice una hora y calcula cuantos minutos faltan para año nuevo a partir de esta
      * @param hour String que da la hora base
-     * @return Int timeLeft que devuelve cuantos minutos faltan para año nuevo
+     * @return Devuelve cuantos minutos faltan para año nuevo
      */
     public static int newYear(String hour){
         int hours, minutes, timeLeft = 0;
@@ -107,8 +107,8 @@ public class String_management {
     }
 
     /**
-     * Método el cual su acción es recibir una cadena de caracteres y un caracter ademas de un entero que diga cuantas veces se repetirá ese caracter además de un byte que especifique
-     * donde se pondrán esos caracteres en la cadena, si por izquierda o por derecha
+     * Metodo el cual su acción es recibir una cadena de caracteres y un caracter ademas de un entero que diga cuantas veces se repetirá ese caracter además de un byte que especifique
+     * donde se pondran esos caracteres en la cadena, si por izquierda o por derecha
      * @param stringFill Cadena inicial
      * @param charFill Caracter a unir a la cadena
      * @param rightLeft Byte para saber si se concatena a derecha o izquierda
@@ -138,9 +138,9 @@ public class String_management {
     }
 
     /**
-     * este metodo realiza el proceso de borrar caracteres de una cadena de caracteres
-     * @param stringDelete cadena de caracteres donde se va a borrar un caracter;
-     * @param charDelete caracter que se va a borrar de la cadena de caracteres;
+     * Este metodo realiza el proceso de borrar caracteres de una cadena de caracteres
+     * @param stringDelete Cadena de caracteres donde se va a borrar un caracter;
+     * @param charDelete Caracter que se va a borrar de la cadena de caracteres;
      */
 
     public static String deleteChar( String stringDelete, String charDelete) {
@@ -152,7 +152,7 @@ public class String_management {
 
 
     /**
-     * Este método realiza el proceso de recibir dos cadenas de texto e intercalar sus calacteres pero sin dejar caracteres repetidos
+     * Este metodo realiza el proceso de recibir dos cadenas de texto e intercalar sus calacteres pero sin dejar caracteres repetidos
      * @param interString1  Primera cadena a intercalar sus caracteres
      * @param interString2  Segunda cadena a intercalar sus caracteres
      * @return Retorna una sola cadena pero con los caracteres intercalados de las dos cadenas de entrada y sin repetir
@@ -209,7 +209,7 @@ public class String_management {
     }
 
     /**
-     * Método que elimina los caracteres repetidos de una cadena y solo deja el primero
+     * Metodo que elimina los caracteres repetidos de una cadena y solo deja el primero
      * @param charRepeat Cadena a la cual se le eliminaran sus caracteres repetidos
      * @return Devuelve la cadena sin los caracteres repetidos
      */
@@ -226,7 +226,7 @@ public class String_management {
     }
 
     /**
-     * En este método lo que se realiza es el conteo de palabras que tiene una cadena de entrada
+     * En este metodo lo que se realiza es el conteo de palabras que tiene una cadena de entrada
      * @param stringAmount Cadena a la que se contaran su cantidad de palabras
      * @return Entero que indica la cantidad de palabras de la cadena
      */
@@ -241,14 +241,15 @@ public class String_management {
     }
 
     /**
-     *  Metodo que comprueba si un correo electronico es válido
+     *  Metodo que comprueba si un correo electronico es valido
      * @param email Correo electronico ingresado por el usuario
-     * @return Devuelve un valor lógico (true o false)
+     * @return Devuelve un valor logico (true o false)
      */
     public static boolean validateEmail(String email){
         /*
         Para poder validar el correo electrónico se utiliza un patrón que mediante un regex o expresion regular comprueba la validez del correo ingresado la parte
-        [\w-]+(\.[\w-]+ los caracteres iniciales a-z, A-Z y 0-9 y el punto los demas signos,
+        [\w-]+(\.[\w-]+ los caracteres iniciales a-z, A-Z y 0-9 y el punto son los demas signos, debspues debe estar forzadamente un arroba y después de este solo
+        se aceptan caracateres entre a-z A-z 0-9 y finalmente con un punto se aceptan caractere alfabeticos pero solo dos elementos
          */
         return Pattern.matches("^[\\w-]+(\\.[\\w-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{0,2})$", email);
     }

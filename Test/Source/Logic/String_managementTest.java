@@ -18,7 +18,7 @@ class String_managementTest {
 
     @Test
     void countVowels() {
-        assertEquals(6, String_management.countVowels("que tal amigo"));
+        assertEquals(8, String_management.countVowels("que tal amigo día"));
     }
 
     @Test

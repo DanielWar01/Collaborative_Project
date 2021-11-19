@@ -5,6 +5,7 @@ import Logic.String_management;
 import javax.swing.*;
 import java.util.regex.Pattern;
 
+
 public class Main {
     public static void main(String[] args) {
         int option = 0;
