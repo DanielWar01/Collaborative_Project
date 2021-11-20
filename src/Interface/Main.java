@@ -104,9 +104,8 @@ public class Main {
                                     "\n2) No"));
                             if(ofCoorse == 1) {
                                 exit = false;
-                                break;
                             }
-
+                            break;
                     }
                 }catch (NumberFormatException ex){
                     JOptionPane.showMessageDialog(null, "En la opción debes ingresar solo números enteros o ingresar alguna opción");
