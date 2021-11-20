@@ -93,9 +93,9 @@ public class Main {
                         case 10 :
                             str = JOptionPane.showInputDialog("Ingresa el correo electrónico a validar ");
                             if (String_management.validateEmail(str)) {
-                                JOptionPane.showMessageDialog(null, "El correo electronico es válido");
+                                JOptionPane.showMessageDialog(null, "El correo electrónico es válido");
                             }else{
-                                    JOptionPane.showMessageDialog(null, "El correo electronico ingresado es inválido");
+                                    JOptionPane.showMessageDialog(null, "El correo electrónico ingresado es inválido");
                                 }
                             break;
                         case 11 :

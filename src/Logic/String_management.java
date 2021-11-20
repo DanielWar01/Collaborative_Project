@@ -111,7 +111,7 @@ public class String_management {
      * donde se pondran esos caracteres en la cadena, si por izquierda o por derecha
      * @param stringFill Cadena inicial
      * @param charFill Caracter a unir a la cadena
-     * @param rightLeft Byte para saber si se concatena a derecha o izquierda
+     * @param rightLeft Boolean para saber si se concatena a derecha o izquierda
      * @param amount Cnatidad de veces que se reperita el caracter introducido
      * @return Devuelve una cadena concatenada con la catidad de veces el caracter introducido por el usuario
      */
