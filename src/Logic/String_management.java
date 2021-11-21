@@ -1,5 +1,6 @@
 package Logic;
 
+import javax.swing.*;
 import java.util.StringTokenizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -97,10 +98,14 @@ public class String_management {
      */
     public static int newYear(String hour){
         int hours, minutes, timeLeft = 0;
-
-            hours = Integer.parseInt(hour.substring(0,2));
-            minutes = Integer.parseInt(hour.substring(3,5));
-            timeLeft = ((23-hours)*60)+(60-minutes);
+            if(Pattern.matches("^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$", hour)) {
+                hours = Integer.parseInt(hour.substring(0, 2));
+                minutes = Integer.parseInt(hour.substring(3, 5));
+                timeLeft = ((23 - hours) * 60) + (60 - minutes);
+                System.out.println("Para año nuevo faltan "+timeLeft+" minutos");
+            }else{
+                System.out.println("La cadena no está formada en formato 00:00");
+            }
 
         return timeLeft;
 
@@ -251,7 +256,11 @@ public class String_management {
         [\w-]+(\.[\w-]+ los caracteres iniciales a-z, A-Z y 0-9 y el punto son los demas signos, debspues debe estar forzadamente un arroba y después de este solo
         se aceptan caracateres entre a-z A-z 0-9 y finalmente con un punto se aceptan caractere alfabeticos pero solo dos elementos
          */
-        return Pattern.matches("^[\\w-]+(\\.[\\w-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]{0,3}+)*(\\.[A-Za-z]{0,2})$", email);
+        boolean validate = false;
+        if (Pattern.matches("^[\\w-]+(\\.[\\w-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]{0,3}+)*(\\.[A-Za-z]{0,2})$", email) || Pattern.matches("^[\\w-]+(\\.[\\w-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]{0,3})$", email)){
+            validate = true;
+        }
+        return validate;
     }
 
 }
