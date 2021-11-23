@@ -56,6 +56,6 @@ class String_managementTest {
     void validateEmail() {
         assertTrue(String_management.validateEmail("guerra.daniel@uptc023fasdgg.org.mx"));
         assertFalse(String_management.validateEmail("guerra.daniel@uptc.edu.com"));
-        assertTrue(String_management.validateEmail("guerra.daniel01@gmail.com.co"));
+        assertTrue(String_management.validateEmail("guerra.daniel01@gmail.com"));
     }
 }

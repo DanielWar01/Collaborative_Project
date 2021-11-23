@@ -60,15 +60,22 @@ public class Main {
                             str = JOptionPane.showInputDialog("Ingresa la cadena que quieres concatenar con los caracteres");
                             char fillChar = JOptionPane.showInputDialog("Ingresa el caracter a concatenar" +
                                     "\n'Solo se tomara el primer caracter'").charAt(0);
-                            try {
-                                int amount = Integer.parseInt(JOptionPane.showInputDialog("Ingresa la cantidad de caracteres a concatenar"));
-                                boolean rigthLeft = Boolean.parseBoolean(JOptionPane.showInputDialog("¿Dónde quieres concatenar?" +
-                                        "\nfalse para izquierda" +
-                                        "\ntrue para derecha"));
-                                JOptionPane.showMessageDialog(null, "La cadena resultante es: '" + String_management.fillCharString(str, fillChar, rigthLeft, amount)+"' ");
-                            }catch(NumberFormatException exception){
-                                JOptionPane.showMessageDialog(null, "La cantidad debe ser solo un número entero");
-                            }
+                            boolean nChar = true;
+                            do {
+                                try {
+                                    int amount = Integer.parseInt(JOptionPane.showInputDialog("Ingresa la cantidad de caracteres a concatenar"));
+                                    if (amount > 0) {
+                                        boolean rigthLeft = Boolean.parseBoolean(JOptionPane.showInputDialog("¿Dónde quieres concatenar?" +
+                                                "\nfalse para izquierda" +
+                                                "\ntrue para derecha"));
+                                        JOptionPane.showMessageDialog(null, "La cadena resultante es: '" + String_management.fillCharString(str, fillChar, rigthLeft, amount) + "' ");
+                                        nChar = true;
+                                    }
+                                } catch (NumberFormatException exception) {
+                                    JOptionPane.showMessageDialog(null, "La cantidad debe ser solo un número entero");
+                                    nChar = false;
+                                }
+                            }while(!nChar);
                             break;
                         case 6 :
                             str = JOptionPane.showInputDialog("Ingresa la cadena a la que borraras el caracter");
