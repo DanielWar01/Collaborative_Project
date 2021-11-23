@@ -1,0 +1,82 @@
+.idea / ** / workspace.xml
+.idea / ** / tasks.xml
+.idea / ** / use.statistics.xml
+.idea / ** / diccionarios
+.idea / ** / estante
+
+# Específico del usuario de AWS
+.idea / ** / aws.xml
+
+# Archivos generados
+.idea / ** / contentModel.xml
+
+# Archivos sensibles o de alta rotación
+.idea / ** / dataSources /
+.idea / ** / dataSources.ids
+.idea / ** / dataSources.local.xml
+.idea / ** / sqlDataSources.xml
+.idea / ** / dynamic.xml
+.idea / ** / uiDesigner.xml
+.idea / ** / dbnavigator.xml
+
+# Gradle
+.idea / ** / gradle.xml
+.idea / ** / bibliotecas
+
+# Gradle y Maven con importación automática
+# Al usar Gradle o Maven con la importación automática, debe excluir los archivos del módulo,
+# ya que se volverán a crear y pueden provocar pérdidas. Descomentar si está usando
+# importación automática.
+# .idea / artefactos
+# .idea / compiler.xml
+# .idea / jarRepositories.xml
+# .idea / modules.xml
+# .idea / *. iml
+# .idea / módulos
+# * .iml
+# * .ipr
+
+# CMake
+cmake-build- * /
+
+# Complemento de Mongo Explorer
+.idea / ** / mongoSettings.xml
+
+# Formato de proyecto basado en archivos
+* .iws
+
+# IntelliJ
+fuera /
+
+Complemento # mpeltonen / sbt-idea
+.idea_modules /
+
+# Complemento JIRA
+atlassian-ide-plugin.xml
+
+# Complemento cursivo de Clojure
+.idea / replstate.xml
+
+# Complemento de Crashlytics (para Android Studio e IntelliJ)
+com_crashlytics_export_strings.xml
+crashlytics.properties
+crashlytics-build.properties
+fabric.properties
+
+# Cliente de descanso basado en editor
+.idea / httpRequests
+
+# Archivo de caché serializado de Android studio 3.1+
+.idea / caches / build_file_checksums.ser
+© 2021 GitHub, Inc.
+Condiciones
+Intimidad
+Seguridad
+Estado
+Docs
+Póngase en contacto con GitHub
+Precios
+API
+Capacitación
+Blog
+Sobre
