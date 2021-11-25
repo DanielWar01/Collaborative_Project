@@ -256,11 +256,10 @@ public class String_management {
         [\w-]+(\.[\w-]+ los caracteres iniciales a-z, A-Z y 0-9 y el punto son los demas signos, debspues debe estar forzadamente un arroba y después de este solo
         se aceptan caracateres entre a-z A-z 0-9 y finalmente con un punto se aceptan caractere alfabeticos pero solo dos elementos
          */
-        boolean validate = false;
         if (Pattern.matches("^[\\w-]+(\\.[\\w-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]{0,3}+)*(\\.[A-Za-z]{0,2})$", email) || Pattern.matches("^[\\w-]+(\\.[\\w-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]{0,3})$", email)){
-            validate = true;
+            return true;
         }
-        return validate;
+        return false;
     }
 
 }
